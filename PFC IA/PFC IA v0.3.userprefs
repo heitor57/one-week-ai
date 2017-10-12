@@ -1,0 +1,21 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\AutoConfigNPC.cs">
+    <Files>
+      <File FileName="Assets\PlayerWITHIA\AboutPerson.cs" Line="1" Column="1" />
+      <File FileName="Assets\AI\Actions\Update.cs" Line="168" Column="4" />
+      <File FileName="Assets\AI\Actions\Formation.cs" Line="1" Column="1" />
+      <File FileName="Assets\AutoConfigNPC.cs" Line="28" Column="49" />
+      <File FileName="Assets\AI\Actions\DangerControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\PlayerWITHIA\AudioAspect.cs" Line="9" Column="25" />
+      <File FileName="Assets\FBX\NPC\Scripts\SOldado\SerHumano.cs" Line="1" Column="1" />
+      <File FileName="Assets\FBX\NPC\Scripts\SOldado\Sword.cs" Line="1" Column="1" />
+      <File FileName="Assets\AI\Actions\PlayAudio.cs" Line="30" Column="5" />
+      <File FileName="Assets\AI\Actions\PlayAnimation.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
