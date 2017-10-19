@@ -67,7 +67,7 @@ public class AboutPerson : Object {
 		multiplier = 0;
 		if (whowantstoknow.GetFacçao() == faction)
 			multiplier = 2;
-		if ( feelings [Constants.violency] +feelings [Constants.threat] - feelings [Constants.charisma]  -friendly_faction*multiplier >= 40)
+		if ( feelings [Constants.violency] +feelings [Constants.threat] - feelings [Constants.charisma]  -friendly_faction*multiplier >= 40 || feelings[Constants.violency]>0 && (whowantstoknow.GetVida()/whowantstoknow.basicStats.startLife)<=0.5)
 			return true;
 		return false;
 	}
