@@ -22,7 +22,7 @@ public class Update : RAINAction
 		tempfloat = new float[Constants.amountfeelings];
 		tempfloat[Constants.courage] = persontemp.GetComponent<SerHumano>().GetCoragem();
 		tempfloat[Constants.charisma] = persontemp.GetComponent<SerHumano>().GetCarisma();
-		tempfloat[Constants.intimidation] = persontemp.GetComponent<SerHumano>().GetIntimidacao();
+		tempfloat[Constants.intimidation] = persontemp.GetComponent<SerHumano>().GetAmeaca();
 		tempfloat[Constants.goodness] = persontemp.GetComponent<SerHumano>().GetBondade();
 		tempfloat [Constants.leadership] = persontemp.GetComponent<SerHumano> ().GetLideranca ();
 		tempfloat[Constants.violency] = 0;// implementado porem ele nao tem uma opiniao sobre a violencia
@@ -61,41 +61,43 @@ public class Update : RAINAction
 		
 		for ( i = 0; i < ((List<GameObject>)ai.WorkingMemory.GetItem ("person")).Count; i++) {
 			persontemp = ((List<GameObject>)ai.WorkingMemory.GetItem ("person")) [i];
-			if(aboutperson.Count == 0){
+			
+			if (aboutperson.Count == 0) {
 				if (alreadyattacked.Count > 0)
 					alreadyattacked.Clear ();
 				tempfloat = new float[Constants.amountfeelings];
-				tempfloat[Constants.courage] = persontemp.GetComponent<SerHumano>().GetCoragem();
-				tempfloat[Constants.charisma] = persontemp.GetComponent<SerHumano>().GetCarisma();
-				tempfloat[Constants.intimidation] = persontemp.GetComponent<SerHumano>().GetIntimidacao();
-				tempfloat[Constants.goodness] = persontemp.GetComponent<SerHumano>().GetBondade();
+
+				tempfloat [Constants.courage] = persontemp.GetComponent<SerHumano> ().GetCoragem ();
+				tempfloat [Constants.charisma] = persontemp.GetComponent<SerHumano> ().GetCarisma ();
+				tempfloat [Constants.threat] = persontemp.GetComponent<SerHumano> ().GetAmeaca ();
+				tempfloat [Constants.goodness] = persontemp.GetComponent<SerHumano> ().GetBondade ();
 				tempfloat [Constants.leadership] = persontemp.GetComponent<SerHumano> ().GetLideranca ();
-				tempfloat[Constants.violency] = 0;// implementado porem ele nao tem uma opiniao sobre a violencia
-				aboutperson.Add (new AboutPerson(persontemp,
-					tempfloat, persontemp.GetComponent<CharacterBase>(),persontemp.GetComponent<SerHumano> ().GetFacçao ()));
-				alreadyattacked.Add (aboutperson[aboutperson.Count -1],false);
+				tempfloat [Constants.violency] = 0;// implementado porem ele nao tem uma opiniao sobre a violencia
+				aboutperson.Add (new AboutPerson (persontemp,
+					tempfloat, persontemp.GetComponent<CharacterBase> (), persontemp.GetComponent<SerHumano> ().GetFacçao ()));
+				alreadyattacked.Add (aboutperson [aboutperson.Count - 1], false);
 				
-			}
-			else
+			} else {
 				for (j = 0; j < aboutperson.Count; j++) {
 					if (aboutperson [j].Person == persontemp) {
 						break;
 					}
 					if (j + 1 == aboutperson.Count) {
 						tempfloat = new float[Constants.amountfeelings];
-						tempfloat[Constants.courage] = persontemp.GetComponent<SerHumano>().GetCoragem();
-						tempfloat[Constants.charisma] = persontemp.GetComponent<SerHumano>().GetCarisma();
-						tempfloat[Constants.intimidation] = persontemp.GetComponent<SerHumano>().GetIntimidacao();
-						tempfloat[Constants.goodness] = persontemp.GetComponent<SerHumano>().GetBondade();
+						tempfloat [Constants.courage] = persontemp.GetComponent<SerHumano> ().GetCoragem ();
+						tempfloat [Constants.charisma] = persontemp.GetComponent<SerHumano> ().GetCarisma ();
+						tempfloat [Constants.threat] = persontemp.GetComponent<SerHumano> ().GetAmeaca ();
+						tempfloat [Constants.goodness] = persontemp.GetComponent<SerHumano> ().GetBondade ();
 						tempfloat [Constants.leadership] = persontemp.GetComponent<SerHumano> ().GetLideranca ();
-						tempfloat[Constants.violency] = 0;// implementado porem ele nao tem uma opiniao sobre a violencia
-						aboutperson.Add (new AboutPerson(persontemp,
-							tempfloat, persontemp.GetComponent<CharacterBase>(),persontemp.GetComponent<SerHumano> ().GetFacçao ()));
-						if(!alreadyattacked.ContainsKey(aboutperson[aboutperson.Count -1 ]))
-							alreadyattacked.Add (aboutperson[aboutperson.Count -1],false);
+						tempfloat [Constants.violency] = 0;// implementado porem ele nao tem uma opiniao sobre a violencia
+						aboutperson.Add (new AboutPerson (persontemp,
+							tempfloat, persontemp.GetComponent<CharacterBase> (), persontemp.GetComponent<SerHumano> ().GetFacçao ()));
+						if (!alreadyattacked.ContainsKey (aboutperson [aboutperson.Count - 1]))
+							alreadyattacked.Add (aboutperson [aboutperson.Count - 1], false);
 						break;
 					}
 				}
+			}
 		
 		}
 

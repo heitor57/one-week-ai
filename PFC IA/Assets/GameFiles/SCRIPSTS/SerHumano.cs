@@ -8,7 +8,7 @@ public abstract class SerHumano : SerVivo {
 	[SerializeField]protected int coragem=0;
 	[SerializeField]protected int influencia=0;
 	[SerializeField]protected int lealdade=0;
-	[SerializeField]protected int intimidacao=0;
+	[SerializeField]protected int ameaca=0;
 	[SerializeField]protected int lideranca=0;
 	[SerializeField]protected int inteligencia=0;
 	[SerializeField]protected string facçao="Neutro";
@@ -73,9 +73,9 @@ public abstract class SerHumano : SerVivo {
 	{
 		return this.influencia;
 	}
-	public int GetIntimidacao()
+	public int GetAmeaca()
 	{
-		return this.intimidacao;
+		return this.ameaca;
 	}
 	public int GetLideranca()
 	{
@@ -101,9 +101,9 @@ public abstract class SerHumano : SerVivo {
 	{
 		this.influencia = influencia;
 	}
-	public void SetIntimidacao(int intimidacao)
+	public void SetAmeaca(int ameaca)
 	{
-		this.intimidacao = intimidacao;
+		this.ameaca = ameaca;
 	}
 	public void SetLideranca(int lideranca)
 	{

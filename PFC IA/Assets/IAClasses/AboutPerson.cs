@@ -6,7 +6,7 @@ static class Constants{
 	public const int charisma = 0;
 	public const int violency = 1;
 	public const int courage = 2;
-	public const int intimidation = 3;
+	public const int threat = 3;
 	public const int goodness = 4;
 	public const int leadership = 5;
 }
@@ -58,7 +58,7 @@ public class AboutPerson : Object {
 		return characbase.currentLevel;
 	}
 	public bool goBattle(SerHumano whowantstoknow){
-		if( (3*whowantstoknow.GetCoragem()+2*feelings[Constants.violency])/5 + whowantstoknow.currentLevel*2 >= feelings[Constants.intimidation]+level()*2 )
+		if( (3*whowantstoknow.GetCoragem()+2*feelings[Constants.violency])/5 + whowantstoknow.currentLevel*2 >= feelings[Constants.threat]+level()*2 )
 			return true;
 		return false;
 	}
@@ -67,7 +67,7 @@ public class AboutPerson : Object {
 		multiplier = 0;
 		if (whowantstoknow.GetFacçao() == faction)
 			multiplier = 2;
-		if ( feelings [Constants.violency] +feelings [Constants.intimidation] - feelings [Constants.charisma]  -friendly_faction*multiplier >= 40)
+		if ( feelings [Constants.violency] +feelings [Constants.threat] - feelings [Constants.charisma]  -friendly_faction*multiplier >= 40)
 			return true;
 		return false;
 	}
@@ -87,7 +87,7 @@ public class AboutPerson : Object {
 			if (whowantstoknow.GetFacçao() == faction)
 				multiplier = 1;
 			if (friendly_faction * multiplier + feelings [Constants.charisma] 
-				- feelings [Constants.intimidation] - feelings [Constants.violency] >= 60)
+				- feelings [Constants.threat] - feelings [Constants.violency] >= 60)
 				return true;
 		}
 		return false;
