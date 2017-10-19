@@ -121,7 +121,7 @@ public abstract class SerHumano : SerVivo {
 		if (vida <= 0)
 		{
 			Destroy (gameObject.GetComponent<RAIN.Core.AIRig> ());
-			animator.Play ("morte1");
+			GetComponent<Animator> ().Play ("morte1");
 			this.GetComponent<CapsuleCollider> ().direction = 2;
 			this.GetComponent<CapsuleCollider> ().center = new Vector3 (0f, 0f, 1.2f);
 			Destroy (gameObject, 5f);
