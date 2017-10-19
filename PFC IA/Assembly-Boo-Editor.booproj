@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{851C5E9C-2583-2FD6-173E-63C5FF538B1F}</ProjectGuid>
+    <ProjectGuid>{175DE325-B01A-F1C6-9484-0B7FB41D3AC3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-Boo-Editor</AssemblyName>
@@ -54,6 +54,7 @@
      <None Include="Assets\AI\BehaviorTrees\Resources\FarmerBehavior.txt" />
      <None Include="Assets\RAIN\Editor\ScriptTemplates\BehaviorTreeTemplate.xml" />
      <None Include="Assets\AI\BehaviorTrees\Resources\CitizenBehavior.txt" />
+     <None Include="Assets\GameFiles\InventoryMaster\readme.txt" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -109,21 +110,21 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="RAIN">
- <HintPath>C:/Users/Heitor/Desktop/projpfc/PFC IA v0.4/Assets/RAIN/RAIN.dll</HintPath>
+ <HintPath>C:/Users/Heitor/Desktop/conexao git/PFC IA/Assets/RAIN/RAIN.dll</HintPath>
  </Reference>
  <Reference Include="RAINMetaform">
- <HintPath>C:/Users/Heitor/Desktop/projpfc/PFC IA v0.4/Assets/RAIN/RAINMetaform.dll</HintPath>
+ <HintPath>C:/Users/Heitor/Desktop/conexao git/PFC IA/Assets/RAIN/RAINMetaform.dll</HintPath>
  </Reference>
  <Reference Include="RAINEditor">
- <HintPath>C:/Users/Heitor/Desktop/projpfc/PFC IA v0.4/Assets/RAIN/Editor/RAINEditor.dll</HintPath>
+ <HintPath>C:/Users/Heitor/Desktop/conexao git/PFC IA/Assets/RAIN/Editor/RAINEditor.dll</HintPath>
  </Reference>
  <Reference Include="RAINMetaformEditor">
- <HintPath>C:/Users/Heitor/Desktop/projpfc/PFC IA v0.4/Assets/RAIN/Editor/RAINMetaformEditor.dll</HintPath>
+ <HintPath>C:/Users/Heitor/Desktop/conexao git/PFC IA/Assets/RAIN/Editor/RAINMetaformEditor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{136D9854-42C8-6B69-252B-FD9C20F60357}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{EB89A649-532C-BE31-162D-94F6900B155A}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

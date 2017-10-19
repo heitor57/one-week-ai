@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1D7F44F6-32DD-1C2D-6D27-FE448E7C67D6}</ProjectGuid>
+    <ProjectGuid>{D65099E4-42F1-EF5C-9EBD-120D970D194C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -46,6 +46,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GameFiles\InventoryMaster\Editor\CraftSystemEditor.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Editor\EquipmentSystemEditor.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Editor\HotbarEditor.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Editor\IM_Manager.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Editor\InventoryDesignEditor.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Editor\InventoryEditor.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Editor\StorageInventoryEditor.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Editor\TooltipEditor.cs" />
      <Compile Include="Assets\RAIN\Editor\ScriptTemplates\ActionTemplate_CS.cs" />
      <Compile Include="Assets\RAIN\Editor\ScriptTemplates\DecisionTemplate_CS.cs" />
      <None Include="Assets\RAIN\Editor\Shaders\RAINShader.shader" />
@@ -54,6 +62,7 @@
      <None Include="Assets\AI\BehaviorTrees\Resources\FarmerBehavior.txt" />
      <None Include="Assets\RAIN\Editor\ScriptTemplates\BehaviorTreeTemplate.xml" />
      <None Include="Assets\AI\BehaviorTrees\Resources\CitizenBehavior.txt" />
+     <None Include="Assets\GameFiles\InventoryMaster\readme.txt" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -109,21 +118,21 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="RAIN">
- <HintPath>C:/Users/Heitor/Desktop/projpfc/PFC IA v0.4/Assets/RAIN/RAIN.dll</HintPath>
+ <HintPath>C:/Users/Heitor/Desktop/conexao git/PFC IA/Assets/RAIN/RAIN.dll</HintPath>
  </Reference>
  <Reference Include="RAINMetaform">
- <HintPath>C:/Users/Heitor/Desktop/projpfc/PFC IA v0.4/Assets/RAIN/RAINMetaform.dll</HintPath>
+ <HintPath>C:/Users/Heitor/Desktop/conexao git/PFC IA/Assets/RAIN/RAINMetaform.dll</HintPath>
  </Reference>
  <Reference Include="RAINEditor">
- <HintPath>C:/Users/Heitor/Desktop/projpfc/PFC IA v0.4/Assets/RAIN/Editor/RAINEditor.dll</HintPath>
+ <HintPath>C:/Users/Heitor/Desktop/conexao git/PFC IA/Assets/RAIN/Editor/RAINEditor.dll</HintPath>
  </Reference>
  <Reference Include="RAINMetaformEditor">
- <HintPath>C:/Users/Heitor/Desktop/projpfc/PFC IA v0.4/Assets/RAIN/Editor/RAINMetaformEditor.dll</HintPath>
+ <HintPath>C:/Users/Heitor/Desktop/conexao git/PFC IA/Assets/RAIN/Editor/RAINMetaformEditor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{136D9854-42C8-6B69-252B-FD9C20F60357}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{EB89A649-532C-BE31-162D-94F6900B155A}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

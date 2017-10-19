@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{136D9854-42C8-6B69-252B-FD9C20F60357}</ProjectGuid>
+    <ProjectGuid>{EB89A649-532C-BE31-162D-94F6900B155A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -70,28 +70,124 @@
      <Compile Include="Assets\AutoConfigNPC.cs" />
      <Compile Include="Assets\AutoConfigPlayer.cs" />
      <Compile Include="Assets\AutoConfigSoldier.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\CraftSystem\Blueprint.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\CraftSystem\BlueprintDatabase.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\CraftSystem\CraftResultSlot.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\CraftSystem\CraftSystem.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\CraftSystem\CreateBlueprintDatabase.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\CraftSystem\LeftClick.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\CraftSystem\RightClick.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\ExampleScript\PlayerInventory.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\ExampleScript\RandomChestLootSystem.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\ExampleScript\RandomLootSystem.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\ExampleScript\WorkingStation.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\ExampleScript\changeEquip.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\FirstPerson\FirstPersonController.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Hotbar\Hotbar.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Inventory\CloseInventory.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Inventory\DesignForInventory.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Inventory\DragInventory.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Inventory\EquipmentSystem.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Inventory\InputManager.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Inventory\Inventory.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Inventory\InventoryDesign.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Inventory\StorageInventory.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\ConsumeItem.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\CreateAttributeDatabase.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\CreateInputManager.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\CreateItemDatabase.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\DragItem.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\Item.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\ItemAttribute.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\ItemAttributeList.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\ItemDataBaseList.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\ItemOnObject.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\ItemType.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\PickUpItem.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\ShowTooltip.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\SlotCover.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Item\SplitItem.cs" />
+     <Compile Include="Assets\GameFiles\InventoryMaster\Scripts\Tooltip\Tooltip.cs" />
+     <Compile Include="Assets\GameFiles\MenuMorte.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Animal.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Arvore.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Burgues.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Cachorro.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Campones.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Capitao.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Cavaleiro.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Cavalo.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Clero.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Corte.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\DOCUMENTAÇAO.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Escudeiro.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Frases.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Gado.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\GeradorItem.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Graminha.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Interacao.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Medicinal.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Nativo.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Nobre.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Nomes.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Normal.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Plebeu.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Rainha.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Realeza.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Regente.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Rei.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Revoada.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\SerHumano.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\SerVivo.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Sudito.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Vegetaçao.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\Venenosa.cs" />
+     <Compile Include="Assets\GameFiles\SCRIPSTS\move.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\CameraController.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Colectibles.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\DestructiveBase.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Destrutiveis.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\DiaNoite.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\GameLogic.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Inventario.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Missoes\Gerenciardor.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Missoes\MUsuario.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Missoes\MissaoColeta.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Missoes\Missoes.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\NotAlive.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\PlayerStatsController.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\Barns.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\BuildingsBase.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\Castle.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\Coletavel.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\Houses.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\ItemDatabase.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\ItensBase.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\SimpleObjects.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\Stores.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\Sword.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\TerrainBase.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\TriangleExplosion.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Nao-Vivos\Walls.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Vivos\AnimationController.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Vivos\CharacterBase.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Vivos\NPC.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Vivos\PlayerBehaviour.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Vivos\TesteAnimacao.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\Seres Vivos\spirit.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\XP.cs" />
+     <Compile Include="Assets\GameFiles\Scripts\goIn.cs" />
      <Compile Include="Assets\IAClasses\AboutPerson.cs" />
      <Compile Include="Assets\IAClasses\AudioAspect.cs" />
      <Compile Include="Assets\IAClasses\PlayerAttackCreatorAspect.cs" />
      <Compile Include="Assets\IAClasses\SlotAspect.cs" />
-     <Compile Include="Assets\NPC\Scripts\SOldado\Cavaleiro.cs" />
-     <Compile Include="Assets\NPC\Scripts\SOldado\CharacterBase.cs" />
-     <Compile Include="Assets\NPC\Scripts\SOldado\Destrutiveis.cs" />
-     <Compile Include="Assets\NPC\Scripts\SOldado\Escudeiro.cs" />
-     <Compile Include="Assets\NPC\Scripts\SOldado\Nobre.cs" />
-     <Compile Include="Assets\NPC\Scripts\SOldado\Nomes.cs" />
-     <Compile Include="Assets\NPC\Scripts\SOldado\PlayerStatsController.cs" />
-     <Compile Include="Assets\NPC\Scripts\SOldado\Realeza.cs" />
-     <Compile Include="Assets\NPC\Scripts\SOldado\SerHumano.cs" />
-     <Compile Include="Assets\NPC\Scripts\SOldado\SerVivo.cs" />
-     <Compile Include="Assets\NPC\Scripts\SOldado\Sudito.cs" />
-     <Compile Include="Assets\NPC\Scripts\SOldado\Sword.cs" />
      <None Include="Assets\RAIN\Editor\Shaders\RAINShader.shader" />
      <None Include="Assets\AI\BehaviorTrees\SoldierBehavior.txt" />
      <None Include="Assets\AI\BehaviorTrees\Resources\SoldierBehavior.txt" />
      <None Include="Assets\AI\BehaviorTrees\Resources\FarmerBehavior.txt" />
      <None Include="Assets\RAIN\Editor\ScriptTemplates\BehaviorTreeTemplate.xml" />
      <None Include="Assets\AI\BehaviorTrees\Resources\CitizenBehavior.txt" />
+     <None Include="Assets\GameFiles\InventoryMaster\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -114,10 +210,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="RAIN">
- <HintPath>C:/Users/Heitor/Desktop/projpfc/PFC IA v0.4/Assets/RAIN/RAIN.dll</HintPath>
+ <HintPath>C:/Users/Heitor/Desktop/conexao git/PFC IA/Assets/RAIN/RAIN.dll</HintPath>
  </Reference>
  <Reference Include="RAINMetaform">
- <HintPath>C:/Users/Heitor/Desktop/projpfc/PFC IA v0.4/Assets/RAIN/RAINMetaform.dll</HintPath>
+ <HintPath>C:/Users/Heitor/Desktop/conexao git/PFC IA/Assets/RAIN/RAINMetaform.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
