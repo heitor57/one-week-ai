@@ -15,7 +15,7 @@ public class GetStatus : RAINAction
 
     public override ActionResult Execute(RAIN.Core.AI ai)
     {
-        return ActionResult.SUCCESS;
+		return ActionResult.SUCCESS;
     }
 
     public override void Stop(RAIN.Core.AI ai)

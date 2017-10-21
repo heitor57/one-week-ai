@@ -4,56 +4,63 @@ using System.Collections.Generic;
 using RAIN.Action;
 using RAIN.Core;
 using RAIN.Animation;
+using RAIN.Serialization;
+using RAIN.Representation;
 [RAINAction]
 public class HeadSearchPoint : RAINAction
 {
-	static private int y = 0;
+	public Expression headpositionstring;// "mid" "left" "right"
+	public Expression headpositionangle; // numeric
+
 	public HeadSearchPoint(){
 		actionName = "HeadSearchPoint";
 	}
-    public override void Start(RAIN.Core.AI ai)
-    {
-        base.Start(ai);
-		y++;
-    }
+	public override void Start(RAIN.Core.AI ai)
+	{
+		base.Start(ai);
 
-    public override ActionResult Execute(RAIN.Core.AI ai)
-    {
-		
+	}
+
+	public override ActionResult Execute(RAIN.Core.AI ai)
+	{
+
 		Vector3 temp = Vector3.zero;
+		if (headpositionangle.IsValid) {
+			temp = new Vector3 (ai.Kinematic.Position.x + Mathf.Sin (Mathf.Deg2Rad * (ai.Body.transform.eulerAngles.y+float.Parse(headpositionangle.ExpressionAsEntered))),
+				1.5f,
+				ai.Kinematic.Position.z + Mathf.Cos (Mathf.Deg2Rad * (ai.Body.transform.eulerAngles.y+float.Parse(headpositionangle.ExpressionAsEntered))));
+			ai.WorkingMemory.SetItem<Vector3> ("SearchPosition", temp);
 
-		if(ai.Body.transform.eulerAngles.y > 315 || ai.Body.transform.eulerAngles.y < 45 || ai.Body.transform.eulerAngles.y > 135 &&  ai.Body.transform.eulerAngles.y < 225 ){
-			if (y % 100 == 50) {
-				temp = new Vector3 (ai.Kinematic.Position.x - 40,
-					ai.Kinematic.Position.y,
-					ai.Kinematic.Position.z);
+		}else if (headpositionstring.IsValid) {
+			switch(headpositionstring.ExpressionAsEntered){
+			case "mid":
+				temp = new Vector3 (ai.Kinematic.Position.x + Mathf.Sin (Mathf.Deg2Rad * ai.Body.transform.eulerAngles.y),
+					1.5f,
+					ai.Kinematic.Position.z + Mathf.Cos (Mathf.Deg2Rad * ai.Body.transform.eulerAngles.y));
 				ai.WorkingMemory.SetItem<Vector3> ("SearchPosition", temp);
+				break;
+			case "right":
+				temp = new Vector3 (ai.Kinematic.Position.x + Mathf.Sin (Mathf.Deg2Rad * (ai.Body.transform.eulerAngles.y+90)),
+					1.5f,
+					ai.Kinematic.Position.z + Mathf.Cos (Mathf.Deg2Rad * (ai.Body.transform.eulerAngles.y+90)));
+				ai.WorkingMemory.SetItem<Vector3> ("SearchPosition", temp);
+				break;
+			case "left":
+				temp = new Vector3 (ai.Kinematic.Position.x + Mathf.Sin (Mathf.Deg2Rad * (ai.Body.transform.eulerAngles.y-90)),
+					1.5f,
+					ai.Kinematic.Position.z + Mathf.Cos (Mathf.Deg2Rad * (ai.Body.transform.eulerAngles.y-90)));
+				ai.WorkingMemory.SetItem<Vector3> ("SearchPosition", temp);
+				break;
 			}
-			if (y % 100 == 0) {
-				temp = new Vector3 (ai.Kinematic.Position.x + 40,
-					ai.Kinematic.Position.y,
-					ai.Kinematic.Position.z);
-				ai.WorkingMemory.SetItem<Vector3> ("SearchPosition", temp);
-			} 
-		}else{
-			if (y % 100 == 50) {
-				temp = new Vector3 (ai.Kinematic.Position.x,
-					ai.Kinematic.Position.y,
-					ai.Kinematic.Position.z -40);
-				ai.WorkingMemory.SetItem<Vector3> ("SearchPosition", temp);
-			}
-			if (y % 100 == 0) {
-				temp = new Vector3 (ai.Kinematic.Position.x,
-					ai.Kinematic.Position.y,
-					ai.Kinematic.Position.z +40);
-				ai.WorkingMemory.SetItem<Vector3> ("SearchPosition", temp);
-			} 
 		}
-		return ActionResult.SUCCESS;
-    }
 
-    public override void Stop(RAIN.Core.AI ai)
-    {
-        base.Stop(ai);
-    }
+		return ActionResult.SUCCESS;
+	}
+
+	public override void Stop(RAIN.Core.AI ai)
+	{
+
+		base.Stop(ai);
+	}
+
 }

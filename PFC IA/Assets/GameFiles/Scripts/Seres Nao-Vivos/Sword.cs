@@ -75,7 +75,6 @@ public class Sword : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider col){
 
-		Debug.Log (col.gameObject);
 		if (col.GetComponent<Destrutiveis>()!= null && atacando==true && col.gameObject!=owner.transform.gameObject ) {
 			col.GetComponent<Destrutiveis>().perdeVida (dmg,GetComponentInParent<CharacterBase>());
 			//(col.gameObject as NotAlive).perdeVida (dmg);
