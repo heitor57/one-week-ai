@@ -16,13 +16,7 @@ public class AutoConfig : MonoBehaviour {
 		//AIRig
 		RAIN.Core.AIRig ai = GetComponent<RAIN.Core.AIRig> ();
 		ai.AI.Body = gameObject;
-		//Adicionando partes do corpo no animador
-		Transform tempTransform = transform.Find("mixamorig:Hips").Find("mixamorig:Spine").Find("mixamorig:Spine1").Find("mixamorig:Spine2").Find("mixamorig:Neck");
-		((BasicAnimator)ai.AI.Animator).Neck.Joint = tempTransform;
-		tempTransform = tempTransform.Find ("mixamorig:Head");
-		((BasicAnimator)ai.AI.Animator).Head.Joint = tempTransform;
-		((BasicAnimator)ai.AI.Animator).LeftEye.Joint = tempTransform.Find ("mixamorig:LeftEye");
-		((BasicAnimator)ai.AI.Animator).RightEye.Joint = tempTransform.Find ("mixamorig:RightEye");
+		
 
 		//Detecçao de pessoa | para os outros
 		VisualAspect person = new VisualAspect("person");

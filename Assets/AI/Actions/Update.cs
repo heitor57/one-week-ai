@@ -116,7 +116,7 @@ public class Update : RAINAction
 			}
 			if(observableperson[i].isFriendly(aboutme) == true){ 
 				friendlyperson.Add (observableperson [i]);
-				if(observableperson[i].Person.GetComponent<AIRig>().AI.WorkingMemory.GetItem<GameObject>("EnemyGo") != null){
+				if(observableperson[i].Person.GetComponent<AIRig>() !=null  && observableperson[i].Person.GetComponent<AIRig>().AI.WorkingMemory.GetItem<GameObject>("EnemyGo") != null){
 					friendlypersonwithenemy.Add (observableperson [i]);
 				}
 			}

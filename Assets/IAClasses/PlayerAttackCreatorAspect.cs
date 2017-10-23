@@ -32,7 +32,7 @@ public class PlayerAttackCreatorAspect : MonoBehaviour {
 	void Update () {
 		
 		//Cria um aspecto "Attack" e o adiciona.
-		if (Input.GetKeyDown (KeyCode.J) && attackmaking == false) {
+		if (Input.GetKeyDown (KeyCode.J) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown (KeyCode.Keypad2) ||Input.GetKeyDown (KeyCode.Keypad1) && attackmaking == false) {
 			StartCoroutine (Wait ());
 		}
 
