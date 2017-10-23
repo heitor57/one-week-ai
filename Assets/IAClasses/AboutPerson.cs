@@ -78,7 +78,7 @@ public class AboutPerson : Object {
 	}
 
 	public float PotencyTogoBattle(SerHumano whowantstoknow){
-		return (3*whowantstoknow.GetCoragem()+2*feelings[Constants.violency])/5 + whowantstoknow.currentLevel*2 
+		return (whowantstoknow.GetCoragem()+feelings[Constants.violency]/5 + whowantstoknow.currentLevel*2 
 			- feelings[Constants.threat]-level()*2;
 	}
 

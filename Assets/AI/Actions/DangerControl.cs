@@ -17,7 +17,7 @@ public class DangerControl : RAINAction
 	public override ActionResult Execute(RAIN.Core.AI ai)
 	{
 		if(ai.WorkingMemory.GetItem("AttackAs")!=null){
-			for(int i=0;i<((List<RAINAspect>)ai.WorkingMemory.GetItem("AttackAs")).Count;i++){
+			for(int i=0;i<((List<GameObject>)ai.WorkingMemory.GetItem("AttackGo")).Count;i++){
 				for (int j = 0; j < ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutperson").Count; j++) {
 					if (((List<GameObject>)ai.WorkingMemory.GetItem ("AttackGo")) [i] ==
 						ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutperson") [j].Person
