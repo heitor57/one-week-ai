@@ -15,7 +15,7 @@ public class Update : RAINAction
 	int i,j;
 
 	List<AboutPerson> aboutperson;
-	SerHumano aboutme;
+	SerVivo aboutme;
 	Dictionary<AboutPerson,bool> alreadyattacked;
 
 	public override void Start(RAIN.Core.AI ai)
@@ -32,7 +32,11 @@ public class Update : RAINAction
 			tempfloat, persontemp.GetComponent<CharacterBase>(),persontemp.GetComponent<SerHumano> ().GetFacçao ()));
 		alreadyattacked.Add (aboutperson[aboutperson.Count -1],false);
 		*/
-		aboutme = ai.Body.GetComponent<SerHumano> ();
+		if(ai.Body.GetComponent<SerHumano> () != null){
+			aboutme = ai.Body.GetComponent<SerHumano> ();
+		}else if(ai.Body.GetComponent<SerVivo> () != null){
+			aboutme = ai.Body.GetComponent<SerVivo> ();
+		}
 		aboutperson = (List<AboutPerson>)ai.WorkingMemory.GetItem ("aboutperson");
 		alreadyattacked = ai.WorkingMemory.GetItem<Dictionary<AboutPerson,bool>> ("alreadyattacked");
 		base.Start(ai);
@@ -58,7 +62,7 @@ public class Update : RAINAction
 
 
 		for (i = 0; i < aboutperson.Count; i++) 
-			if (aboutperson [i].Person == null)
+			if (aboutperson [i].Target == null)
 				aboutperson.RemoveAt (i);
 		
 		for ( i = 0; i < ((List<GameObject>)ai.WorkingMemory.GetItem ("person")).Count; i++) {
@@ -73,7 +77,7 @@ public class Update : RAINAction
 				
 			} else {
 				for (j = 0; j < aboutperson.Count; j++) {
-					if (aboutperson [j].Person == persontemp) {
+					if (aboutperson [j].Target == persontemp) {
 						break;
 					}
 					if (j + 1 == aboutperson.Count) {
@@ -91,7 +95,7 @@ public class Update : RAINAction
 		List<AboutPerson> observableperson = new List<AboutPerson>(); 
 		for (i = 0; i < ((List<GameObject>)ai.WorkingMemory.GetItem ("person")).Count; i++) {
 			for (j = 0; j < aboutperson.Count; j++) {
-				if (aboutperson [j].Person == ai.WorkingMemory.GetItem<List<GameObject>> ("person") [i]) {
+				if (aboutperson [j].Target == ai.WorkingMemory.GetItem<List<GameObject>> ("person") [i]) {
 					observableperson.Add (aboutperson [j]);
 					break;
 				}
@@ -116,7 +120,7 @@ public class Update : RAINAction
 			}
 			if(observableperson[i].isFriendly(aboutme) == true){ 
 				friendlyperson.Add (observableperson [i]);
-				if(observableperson[i].Person.GetComponent<AIRig>() !=null  && observableperson[i].Person.GetComponent<AIRig>().AI.WorkingMemory.GetItem<GameObject>("EnemyGo") != null){
+				if(observableperson[i].Target.GetComponent<AIRig>() !=null  && observableperson[i].Target.GetComponent<AIRig>().AI.WorkingMemory.GetItem<GameObject>("EnemyGo") != null){
 					friendlypersonwithenemy.Add (observableperson [i]);
 				}
 			}
@@ -160,17 +164,16 @@ public class Update : RAINAction
 
 
 		//Setagem dos atributos para utilização da IA
-		if (enemygo.Person != null) {
-			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemygo.Person);
+		if (enemygo.Target != null) {
+			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemygo.Target);
 			ai.WorkingMemory.SetItem<bool> ("GoBattle", enemygo.goBattle (aboutme));
-		} else if (enemyweakgo.Person != null && enemyweakperson.Count <= 3) {
-			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemyweakgo.Person);
+		} else if (enemyweakgo.Target != null && enemyweakperson.Count <= 3) {
+			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemyweakgo.Target);
 			ai.WorkingMemory.SetItem<bool> ("GoBattle", enemyweakgo.goBattle (aboutme));// poderia utilizar true
-		} else if (bestfriendlywithenemy.Person != null) {
-			GameObject bestfriendlyenemy = bestfriendlywithenemy.Person.GetComponent<AIRig> ().AI.WorkingMemory.GetItem<GameObject> ("EnemyGo");
+		} else if (bestfriendlywithenemy.Target != null) {
+			GameObject bestfriendlyenemy = bestfriendlywithenemy.Target.GetComponent<AIRig> ().AI.WorkingMemory.GetItem<GameObject> ("EnemyGo");
 			AboutPerson bestfriendlyenemyabout= new AboutPerson(bestfriendlyenemy);
 
-			Debug.Log (bestfriendlyenemyabout.PotencyTogoBattle (aboutme)+" |||| "+ bestfriendlywithenemy.PotencyToGoingHelp (aboutme));
 			if (bestfriendlywithenemy.isGoingHelp (aboutme) &&
 			    bestfriendlyenemyabout.PotencyTogoBattle (aboutme) + bestfriendlywithenemy.PotencyToGoingHelp (aboutme) >= 45) {
 				ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", bestfriendlyenemy);
@@ -182,12 +185,14 @@ public class Update : RAINAction
 		} else {
 			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", null);
 		}
-		if (bestleader.Person != null) {
-			ai.WorkingMemory.SetItem<GameObject> ("Leader", bestleader.Person);
-			((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")).Head = bestleader.Person;
-		} else {
-			ai.WorkingMemory.SetItem<GameObject> ("Leader", null);
-			((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")).Head = null;
+		if(((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")) != null){
+			if (bestleader.Target != null) {
+				ai.WorkingMemory.SetItem<GameObject> ("Leader", bestleader.Target);
+				((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")).Head = bestleader.Target;
+			} else {
+				ai.WorkingMemory.SetItem<GameObject> ("Leader", null);
+				((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")).Head = null;
+			}
 		}
 		// **Fim
 		// Algoritmo para visualização das caracteristicas das pessoas oo redor
@@ -197,8 +202,8 @@ public class Update : RAINAction
 	public AboutPerson MostClose(List<AboutPerson> persons,AI ai ,float radius){
 		AboutPerson person = new AboutPerson ();
 		for(i = 0; i < persons.Count ;i++){
-			if (Vector3.Distance (persons [i].Person.transform.position, ai.Body.transform.position) <= radius) {
-				radius = Vector3.Distance (persons[i].Person.transform.position, ai.Body.transform.position);
+			if (Vector3.Distance (persons [i].Target.transform.position, ai.Body.transform.position) <= radius) {
+				radius = Vector3.Distance (persons[i].Target.transform.position, ai.Body.transform.position);
 				person = persons [i]; 
 			}
 		}

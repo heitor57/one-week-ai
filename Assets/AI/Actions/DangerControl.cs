@@ -20,7 +20,7 @@ public class DangerControl : RAINAction
 			for(int i=0;i<((List<GameObject>)ai.WorkingMemory.GetItem("AttackGo")).Count;i++){
 				for (int j = 0; j < ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutperson").Count; j++) {
 					if (((List<GameObject>)ai.WorkingMemory.GetItem ("AttackGo")) [i] ==
-						ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutperson") [j].Person
+						ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutperson") [j].Target
 						&& ai.WorkingMemory.GetItem<Dictionary<AboutPerson,bool>> ("alreadyattacked")[ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutperson") [j]] == false) {
 						// Bloqueia a detecçao de ataque 
 						ai.WorkingMemory.GetItem<Dictionary<AboutPerson,bool>> ("alreadyattacked") [ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutperson") [j]] = true;
