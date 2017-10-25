@@ -57,8 +57,8 @@ public class AutoConfigPlayer : AutoConfig {
 		temp.IsActive = false;
 		entity.Entity.AddAspect(temp);
 		//lista de pessoas que se encontrou
-		ai.AI.WorkingMemory.SetItem<List<AboutPerson>>("aboutperson",new List<AboutPerson>());
-		ai.AI.WorkingMemory.SetItem<Dictionary<AboutPerson,bool>>("alreadyattacked",new Dictionary<AboutPerson,bool>());
+		ai.AI.WorkingMemory.SetItem<List<AboutAnimal>>("aboutanimal",new List<AboutAnimal>());
+		ai.AI.WorkingMemory.SetItem<Dictionary<AboutAnimal,bool>>("alreadyattacked",new Dictionary<AboutAnimal,bool>());
 
 		TextAsset BehaviorTree;
 		BehaviorTree = Resources.Load<TextAsset>("PlayerBehavior");

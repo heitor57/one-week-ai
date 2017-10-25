@@ -19,7 +19,7 @@ public class AutoConfig : MonoBehaviour {
 		
 
 		//Detecçao de pessoa | para os outros
-		VisualAspect person = new VisualAspect("person");
+		VisualAspect person = new VisualAspect("animal");
 		person.MountPoint = ai.AI.Body.transform;
 		person.PositionOffset= new Vector3(0,1,0);
 		entity.Entity.AddAspect (person);

@@ -22,12 +22,14 @@ public abstract class AutoConfigNPC : AutoConfig {
 
 		AIRig ai = GetComponent<AIRig> ();
 		//Adicionando partes do corpo no animador
-		Transform tempTransform = transform.Find("mixamorig:Hips").Find("mixamorig:Spine").Find("mixamorig:Spine1").Find("mixamorig:Spine2").Find("mixamorig:Neck");
-		((BasicAnimator)ai.AI.Animator).Neck.Joint = tempTransform;
-		tempTransform = tempTransform.Find ("mixamorig:Head");
-		((BasicAnimator)ai.AI.Animator).Head.Joint = tempTransform;
-		((BasicAnimator)ai.AI.Animator).LeftEye.Joint = tempTransform.Find ("mixamorig:LeftEye");
-		((BasicAnimator)ai.AI.Animator).RightEye.Joint = tempTransform.Find ("mixamorig:RightEye");
+		if (transform.Find ("mixamorig:Hips") != null) {
+			Transform tempTransform = transform.Find ("mixamorig:Hips").Find ("mixamorig:Spine").Find ("mixamorig:Spine1").Find ("mixamorig:Spine2").Find ("mixamorig:Neck");
+			((BasicAnimator)ai.AI.Animator).Neck.Joint = tempTransform;
+			tempTransform = tempTransform.Find ("mixamorig:Head");
+			((BasicAnimator)ai.AI.Animator).Head.Joint = tempTransform;
+			((BasicAnimator)ai.AI.Animator).LeftEye.Joint = tempTransform.Find ("mixamorig:LeftEye");
+			((BasicAnimator)ai.AI.Animator).RightEye.Joint = tempTransform.Find ("mixamorig:RightEye");
+		}
 		//Adicionando sensores
 		VisualSensor tempSensor = new VisualSensor ();
 		tempSensor.SensorName = "Visual Sensor";
@@ -66,8 +68,8 @@ public abstract class AutoConfigNPC : AutoConfig {
 		entity.Entity.AddAspect(temp);
 		
 		//lista de pessoas que se encontrou
-		ai.AI.WorkingMemory.SetItem<List<AboutPerson>>("aboutperson",new List<AboutPerson>());
-		ai.AI.WorkingMemory.SetItem<Dictionary<AboutPerson,bool>>("alreadyattacked",new Dictionary<AboutPerson,bool>());
+		ai.AI.WorkingMemory.SetItem<List<AboutAnimal>>("aboutanimal",new List<AboutAnimal>());
+		ai.AI.WorkingMemory.SetItem<Dictionary<AboutAnimal,bool>>("alreadyattacked",new Dictionary<AboutAnimal,bool>());
 		if(route != null)
 		ai.AI.WorkingMemory.SetItem<GameObject>("route", route);
 	}

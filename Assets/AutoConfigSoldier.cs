@@ -9,7 +9,7 @@ using RAIN.Animation;
 using RAIN.Navigation.Waypoints;
 using RAIN.Entities.Aspects;
 using RAIN.Entities;
-public class AutoConfigSoldier : AutoConfigNPC {
+public class AutoConfigSoldier : AutoConfigAnimal {
 
 	new public void ConfigStart(){
 		base.ConfigStart(); 
@@ -21,14 +21,6 @@ public class AutoConfigSoldier : AutoConfigNPC {
 		// Status do npc
 		//NPCStatus npcstatus = ai.AI.GetCustomElement<NPCStatus> ();
 
-		// slot para formação
-		SlotAspect x = new SlotAspect("slot");
-		x.Slot = new Vector3 (999,0, 999);
-		x.Head = null;
-		x.PositionOffset = new Vector3(0f,1f,0f);
-		x.VisualSize = 1f;
-
-		ai.AI.Body.GetComponent<EntityRig> ().Entity.AddAspect (x);
 	}
 
 	void Start(){

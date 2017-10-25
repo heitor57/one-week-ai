@@ -1,0 +1,1 @@
+<behaviortree version="1.1" repeatuntil="" name="TigerBehavior" debugbreak="False"><sequencer usepriorities="False" repeatuntil="" name="root" debugbreak="False"><action repeatuntil="" priority="" parametervalues="d2Fsaw==" parameters="QW5pbWF0aW9u" namespace="" name="action" debugbreak="False" classname="PlayAnimation"></action></sequencer></behaviortree>
