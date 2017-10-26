@@ -18,17 +18,17 @@ public class DangerControl : RAINAction
 	{
 		if(ai.WorkingMemory.GetItem("AttackAs")!=null){
 			for(int i=0;i<((List<GameObject>)ai.WorkingMemory.GetItem("AttackGo")).Count;i++){
-				for (int j = 0; j < ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutanimal").Count; j++) {
+				for (int j = 0; j < ai.WorkingMemory.GetItem<List<AboutAnimal>> ("aboutanimal").Count; j++) {
 					if (((List<GameObject>)ai.WorkingMemory.GetItem ("AttackGo")) [i] ==
-						ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutanimal") [j].Target
-						&& ai.WorkingMemory.GetItem<Dictionary<AboutPerson,bool>> ("alreadyattacked")[ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutanimal") [j]] == false) {
+						ai.WorkingMemory.GetItem<List<AboutAnimal>> ("aboutanimal") [j].Target
+						&& ai.WorkingMemory.GetItem<Dictionary<AboutAnimal,bool>> ("alreadyattacked")[ai.WorkingMemory.GetItem<List<AboutAnimal>> ("aboutanimal") [j]] == false) {
 						// Bloqueia a detecçao de ataque 
-						ai.WorkingMemory.GetItem<Dictionary<AboutPerson,bool>> ("alreadyattacked") [ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutanimal") [j]] = true;
+						ai.WorkingMemory.GetItem<Dictionary<AboutAnimal,bool>> ("alreadyattacked") [ai.WorkingMemory.GetItem<List<AboutAnimal>> ("aboutanimal") [j]] = true;
 						// Aumenta o quanto violento a pessoa é
-						if (ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutanimal") [j].Feelings [Constants.violency] == 0)
-							ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutanimal") [j].Feelings [Constants.violency] = 100;
+						if (ai.WorkingMemory.GetItem<List<AboutAnimal>> ("aboutanimal") [j].Feelings [Constants.violency] == 0)
+							ai.WorkingMemory.GetItem<List<AboutAnimal>> ("aboutanimal") [j].Feelings [Constants.violency] = 100;
 						else
-							ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutanimal") [j].Feelings[Constants.violency] += 20 + 20*ai.WorkingMemory.GetItem<List<AboutPerson>> ("aboutanimal") [j].Feelings [Constants.violency]/100;
+							ai.WorkingMemory.GetItem<List<AboutAnimal>> ("aboutanimal") [j].Feelings[Constants.violency] += 20 + 20*ai.WorkingMemory.GetItem<List<AboutAnimal>> ("aboutanimal") [j].Feelings [Constants.violency]/100;
 						
 						break; // ja achou a pessoa na memoria, então pode parar
 					}

@@ -15,11 +15,18 @@ public class EnableDamage : RAINAction
 
     public override ActionResult Execute(RAIN.Core.AI ai)
     {
-		if(Atacando.ExpressionAsEntered.Equals("true"))
-			ai.Body.transform.Find ("free_sword").GetComponent<Sword> ().atacando = true;
-		else if(Atacando.ExpressionAsEntered.Equals("false"))
-			ai.Body.transform.Find ("free_sword").GetComponent<Sword> ().atacando = false;
-        return ActionResult.SUCCESS;
+		if(ai.Body.transform.Find("free_sword") != null){
+			if(Atacando.ExpressionAsEntered.Equals("true"))
+				ai.Body.transform.Find ("free_sword").GetComponent<Sword> ().atacando = true;
+			else if(Atacando.ExpressionAsEntered.Equals("false"))
+				ai.Body.transform.Find ("free_sword").GetComponent<Sword> ().atacando = false;
+		}else if(ai.Body.transform.Find("AnimalWeapon") != null){
+			if(Atacando.ExpressionAsEntered.Equals("true"))
+				ai.Body.transform.Find ("AnimalWeapon").GetComponent<AnimalWeapon> ().atacando = true;
+			else if(Atacando.ExpressionAsEntered.Equals("false"))
+				ai.Body.transform.Find ("AnimalWeapon").GetComponent<AnimalWeapon> ().atacando = false;
+		}
+		return ActionResult.SUCCESS;
     }
 
     public override void Stop(RAIN.Core.AI ai)
