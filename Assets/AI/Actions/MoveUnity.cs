@@ -30,7 +30,7 @@ public class MoveUnity : RAINAction
     {
         base.Start(ai);
 		agent = ai.Body.GetComponent<NavMeshAgent> ();
-		agent.stoppingDistance = 0.1f;
+		agent.stoppingDistance = 0.3f;
 		speed = agent.speed;
 		turnspeed = agent.angularSpeed;
 		stoppingdistance = agent.stoppingDistance;

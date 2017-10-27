@@ -22,7 +22,7 @@ public class AudioUpdate : RAINAction
 			
 		if (ai.WorkingMemory.GetItem ("audio") != null) {
 			for (i = 0; i < ((List<RAINAspect>)(ai.WorkingMemory.GetItem ("audio"))).Count; i++) {
-				if (AboutPerson.isGoingHelpUnknown (ai.Body.GetComponent<SerHumano> ()) && ((AudioAspect)(ai.WorkingMemory.GetItem<List<RAINAspect>> ("audio") [i])).data == Speaks.help) {
+				if (AboutPerson.isGoingHelpUnknown (ai.Body.GetComponent<SerVivo> ()) && ((AudioAspect)(ai.WorkingMemory.GetItem<List<RAINAspect>> ("audio") [i])).data == Speaks.help) {
 					audiohelpaspects.Add ((AudioAspect)(ai.WorkingMemory.GetItem<List<RAINAspect>> ("audio") [i]));
 				}
 			}
