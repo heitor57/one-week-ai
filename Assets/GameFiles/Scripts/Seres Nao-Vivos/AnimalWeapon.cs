@@ -19,9 +19,13 @@ public class AnimalWeapon : MonoBehaviour {
 		
 		if (owner != null)
 		{
-			attachPointposi = transform.parent.Find("TSMG_Rig").Find("TSMG_Cruft").Find("rightLeg1_ParentConstrain").Find("rightLeg1_Rigging").Find("rightLeg1_RigJoints").Find("rightLeg1_RigUpperLeg").Find("rightLeg1_RigLowerLeg").Find ("rightLeg1_RigFoot").position;
-			attachPointangle = transform.parent.Find("TSMG_Rig").Find("TSMG_Cruft").Find("rightLeg1_ParentConstrain").Find("rightLeg1_Rigging").Find("rightLeg1_RigJoints").Find("rightLeg1_RigUpperLeg").Find("rightLeg1_RigLowerLeg").Find ("rightLeg1_RigFoot").eulerAngles;
-
+			if(transform.parent.Find("TSMG_Rig")!=null){
+				attachPointposi = transform.parent.Find("TSMG_Rig").Find("TSMG_Cruft").Find("rightLeg1_ParentConstrain").Find("rightLeg1_Rigging").Find("rightLeg1_RigJoints").Find("rightLeg1_RigUpperLeg").Find("rightLeg1_RigLowerLeg").Find ("rightLeg1_RigFoot").position;
+				attachPointangle = transform.parent.Find("TSMG_Rig").Find("TSMG_Cruft").Find("rightLeg1_ParentConstrain").Find("rightLeg1_Rigging").Find("rightLeg1_RigJoints").Find("rightLeg1_RigUpperLeg").Find("rightLeg1_RigLowerLeg").Find ("rightLeg1_RigFoot").eulerAngles;
+			}else if(transform.parent.Find("mixamorig:Hips") !=null){
+				attachPointposi = transform.parent.Find ("mixamorig:Hips").Find ("mixamorig:Spine").Find ("mixamorig:Spine1").Find ("mixamorig:Spine2").Find ("mixamorig:RightShoulder").Find ("mixamorig:RightArm").Find ("mixamorig:RightForeArm").Find ("mixamorig:RightHand").position;
+				attachPointangle = transform.parent.Find ("mixamorig:Hips").Find ("mixamorig:Spine").Find ("mixamorig:Spine1").Find ("mixamorig:Spine2").Find ("mixamorig:RightShoulder").Find ("mixamorig:RightArm").Find ("mixamorig:RightForeArm").Find ("mixamorig:RightHand").eulerAngles;
+			}
 			transform.position = attachPointposi;
 			transform.eulerAngles = attachPointangle;
 		}

@@ -9,7 +9,7 @@ using RAIN.Animation;
 using RAIN.Navigation.Waypoints;
 using RAIN.Entities.Aspects;
 using RAIN.Entities;
-public class AutoConfigSoldier : AutoConfigAnimal {
+public class AutoConfigSoldier : AutoConfigHuman {
 
 	new public void ConfigStart(){
 		base.ConfigStart(); 

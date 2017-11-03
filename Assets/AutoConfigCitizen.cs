@@ -6,7 +6,7 @@ using RAIN.Core;
 using RAIN.BehaviorTrees;
 using RAIN.Perception.Sensors;
 using RAIN.Navigation.Waypoints;
-public class AutoConfigCitizen : AutoConfigNPC {
+public class AutoConfigCitizen : AutoConfigHuman {
 
 	new public void ConfigStart(){
 		base.ConfigStart(); 

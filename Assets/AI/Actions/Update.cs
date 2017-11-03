@@ -7,7 +7,6 @@ using RAIN.Entities.Aspects;
 using RAIN.Perception.Sensors;
 using System.Linq;
 using RAIN.Entities;
-using RAIN.Entities.Aspects;
 [RAINAction]
 public class Update : RAINAction
 {

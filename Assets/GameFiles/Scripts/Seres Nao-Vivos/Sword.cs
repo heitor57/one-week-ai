@@ -11,6 +11,8 @@ public class Sword : MonoBehaviour {
 	public GameObject owner;
 	public bool atacando=false;
 	public bool naperna = true;
+	public GameObject posperna;
+	public GameObject posmao;
 	// Arrumar o colisor depois adicionar os scripts de status e fazer o prefab
 	void Start()
 	{
@@ -62,16 +64,26 @@ public class Sword : MonoBehaviour {
 		//attachPoint = newAP;
 	}
 	public void mao(){
-		attachPointposi = transform.parent.Find ("mixamorig:Hips").Find ("mixamorig:Spine").Find ("mixamorig:Spine1").Find ("mixamorig:Spine2").Find ("mixamorig:RightShoulder").Find ("mixamorig:RightArm").Find ("mixamorig:RightForeArm").Find ("mixamorig:RightHand").position;
-		this.attachPointposi += new Vector3 (-0.04f,0,0);
-		attachPointangle = transform.parent.Find ("mixamorig:Hips").Find ("mixamorig:Spine").Find ("mixamorig:Spine1").Find ("mixamorig:Spine2").Find ("mixamorig:RightShoulder").Find ("mixamorig:RightArm").Find ("mixamorig:RightForeArm").Find ("mixamorig:RightHand").eulerAngles;
-		this.attachPointangle += new Vector3 (0,0,0);
+		if (posmao == null) {
+			attachPointposi = transform.parent.Find ("mixamorig:Hips").Find ("mixamorig:Spine").Find ("mixamorig:Spine1").Find ("mixamorig:Spine2").Find ("mixamorig:RightShoulder").Find ("mixamorig:RightArm").Find ("mixamorig:RightForeArm").Find ("mixamorig:RightHand").position;
+			this.attachPointposi += new Vector3 (-0.04f, 0, 0);
+			attachPointangle = transform.parent.Find ("mixamorig:Hips").Find ("mixamorig:Spine").Find ("mixamorig:Spine1").Find ("mixamorig:Spine2").Find ("mixamorig:RightShoulder").Find ("mixamorig:RightArm").Find ("mixamorig:RightForeArm").Find ("mixamorig:RightHand").eulerAngles;
+			this.attachPointangle += new Vector3 (0, 0, 0);
+		} else {
+			attachPointposi = posmao.transform.position;
+			attachPointangle = posmao.transform.eulerAngles;
+		}
 	}
 	public void perna(){
-		this.attachPointposi = transform.parent.Find ("mixamorig:Hips").Find ("mixamorig:LeftUpLeg").transform.position;
-		this.attachPointposi += new Vector3 (-0.139f, 0, 0);
-		this.attachPointangle = transform.parent.Find ("mixamorig:Hips").Find ("mixamorig:LeftUpLeg").transform.eulerAngles;
-		this.attachPointangle += new Vector3 (140f, +35f,0);
+		if (posperna == null) {
+			this.attachPointposi = transform.parent.Find ("mixamorig:Hips").Find ("mixamorig:LeftUpLeg").transform.position;
+			this.attachPointposi += new Vector3 (-0.139f, 0, 0);
+			this.attachPointangle = transform.parent.Find ("mixamorig:Hips").Find ("mixamorig:LeftUpLeg").transform.eulerAngles;
+			this.attachPointangle += new Vector3 (140f, +35f, 0);
+		} else {
+			attachPointposi = posperna.transform.position;
+			attachPointangle = posperna.transform.eulerAngles;
+		}
 	}
 	void OnTriggerEnter(Collider col){
 

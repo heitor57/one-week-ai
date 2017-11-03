@@ -25,10 +25,8 @@ public class Spawner : MonoBehaviour {
 			childs.Add (child.gameObject,null);
 		}
 
-		if (Object != null)
-			InvokeRepeating (this.Spawn.ToString (), StartTime, RepeatingTime);
-		else
-			Debug.Log ("Missing spawn Object in: "+gameObject);
+		InvokeRepeating (this.Spawn.ToString (), StartTime, RepeatingTime);
+		
 	}
 
 	private void SpawnAnimal(){
