@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using RAIN.Core;
 public class Sword : MonoBehaviour {
 	public float dmg;
 	/*public Transform attachPoint1;
@@ -16,22 +16,9 @@ public class Sword : MonoBehaviour {
 	// Arrumar o colisor depois adicionar os scripts de status e fazer o prefab
 	void Start()
 	{
-		 //Transform temp= new Transform();
-		/*
-		temp.position.x = 0.1217021f;
-		temp.position.y = -0.03058553f;
-		temp.position.z = 0.183293f;
-		temp.eulerAngles.x = 26.087f;
-		temp.eulerAngles.y = -4.119f;
-		temp.eulerAngles.z = -172.307f;
-*/
-
-
 		owner = transform.parent.gameObject;
 		perna();
 		dmg += GetComponentInParent<Destrutiveis>().GetDano();
-		//if (owner != null) {transform.localScale = owner.transform.localScale;}
-
 	}
 
 	void Update()
@@ -52,14 +39,6 @@ public class Sword : MonoBehaviour {
 
 	
 	}
-
-	/*public void changeAttachPoint(){
-		if (attachPoint == attachPoint1) {
-			attachPoint = attachPoint2;
-		} else if (attachPoint == attachPoint2) {
-			attachPoint = attachPoint1;s
-		}
-	}*/
 	public void setAttachPoint(Transform newAP){
 		//attachPoint = newAP;
 	}
@@ -89,7 +68,19 @@ public class Sword : MonoBehaviour {
 
 		if (col.GetComponent<Destrutiveis>()!= null && atacando==true && col.gameObject!=owner.transform.gameObject ) {
 			col.GetComponent<Destrutiveis>().perdeVida (dmg,GetComponentInParent<CharacterBase>());
-			//(col.gameObject as NotAlive).perdeVida (dmg);
+			RAIN.Memory.RAINMemory memory = col.GetComponent<AIRig> ().AI.WorkingMemory;
+			if (memory.GetItem<GameObject> ("EnemyGo") != null) {
+				foreach (AboutAnimal animal in memory.GetItem<List<AboutAnimal>>("aboutanimal")) {
+					if (animal.Target == gameObject) {
+						if (animal.Feelings [Constants.violency] >= 100) {
+							animal.Feelings [Constants.violency] += 20+ animal.Feelings [Constants.violency] / 5;
+						} else {
+							animal.Feelings [Constants.violency] = 100;
+						}
+						break;
+					}
+				}
+			}
 		}
 	}
 
