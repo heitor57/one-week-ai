@@ -68,16 +68,18 @@ public class Sword : MonoBehaviour {
 
 		if (col.GetComponent<Destrutiveis>()!= null && atacando==true && col.gameObject!=owner.transform.gameObject ) {
 			col.GetComponent<Destrutiveis>().perdeVida (dmg,GetComponentInParent<CharacterBase>());
-			RAIN.Memory.RAINMemory memory = col.GetComponent<AIRig> ().AI.WorkingMemory;
-			if (memory.GetItem<GameObject> ("EnemyGo") != null) {
-				foreach (AboutAnimal animal in memory.GetItem<List<AboutAnimal>>("aboutanimal")) {
-					if (animal.Target == gameObject) {
-						if (animal.Feelings [Constants.violency] >= 100) {
-							animal.Feelings [Constants.violency] += 20+ animal.Feelings [Constants.violency] / 5;
-						} else {
-							animal.Feelings [Constants.violency] = 100;
+			if(col.GetComponent<AIRig> () != null){
+				RAIN.Memory.RAINMemory memory = col.GetComponent<AIRig> ().AI.WorkingMemory;
+				if (memory.GetItem<GameObject> ("EnemyGo") != null) {
+					foreach (AboutAnimal animal in memory.GetItem<List<AboutAnimal>>("aboutanimal")) {
+						if (animal.Target == gameObject) {
+							if (animal.Feelings [Constants.violency] >= 100) {
+								animal.Feelings [Constants.violency] += 20+ animal.Feelings [Constants.violency] / 5;
+							} else {
+								animal.Feelings [Constants.violency] = 100;
+							}
+							break;
 						}
-						break;
 					}
 				}
 			}
