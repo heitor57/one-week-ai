@@ -165,14 +165,16 @@ public class Update : RAINAction
 			ai.WorkingMemory.SetItem<bool> ("GoBattle", enemyweakgo.goBattle (aboutme));// poderia utilizar true
 		} else if (bestfriendlywithenemy.Target != null) {
 			GameObject bestfriendlyenemy = bestfriendlywithenemy.Target.GetComponent<AIRig> ().AI.WorkingMemory.GetItem<GameObject> ("EnemyGo");
-			AboutPerson bestfriendlyenemyabout= new AboutPerson(bestfriendlyenemy);
+			if (bestfriendlyenemy != ai.Body) {
+				AboutPerson bestfriendlyenemyabout = new AboutPerson (bestfriendlyenemy);
 
-			if (bestfriendlywithenemy.isGoingHelp (aboutme) &&
-			    bestfriendlyenemyabout.PotencyTogoBattle (aboutme) + bestfriendlywithenemy.PotencyToGoingHelp (aboutme) >= 45) {
-				ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", bestfriendlyenemy);
-				ai.WorkingMemory.SetItem<bool> ("GoBattle", true);
-			} else {
-				ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", null);
+				if (bestfriendlywithenemy.isGoingHelp (aboutme) &&
+				   bestfriendlyenemyabout.PotencyTogoBattle (aboutme) + bestfriendlywithenemy.PotencyToGoingHelp (aboutme) >= 45) {
+					ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", bestfriendlyenemy);
+					ai.WorkingMemory.SetItem<bool> ("GoBattle", true);
+				} else {
+					ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", null);
+				}
 			}
 
 		} else {
