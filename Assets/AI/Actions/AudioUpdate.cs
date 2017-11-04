@@ -36,7 +36,7 @@ public class AudioUpdate : RAINAction
 					audiohelpaspect = audiohelpaspects [i]; 
 				}
 			}
-			if (audiohelpaspects.Count > 0 && audiohelpaspect.AspectName != null) {
+			if (audiohelpaspects.Count > 0 && audiohelpaspect.AspectName != null && audiohelpaspect.Entity != null) {
 				ai.WorkingMemory.SetItem<Vector3>("AudioPosition", audiohelpaspect.Entity.Form.transform.position);
 			}
 		}
