@@ -157,26 +157,35 @@ public class Update : RAINAction
 
 
 		//Setagem dos atributos para utilização da IA
-		if (enemygo.Target != null) {
-			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemygo.Target);
-			ai.WorkingMemory.SetItem<bool> ("GoBattle", enemygo.goBattle (aboutme));
+		 if (enemygo.Target != null) {
+			if (enemygo.Target.GetComponent<SerVivo> ().GetVida () > 0) {
+				ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemygo.Target);
+				ai.WorkingMemory.SetItem<bool> ("GoBattle", enemygo.goBattle (aboutme));
+			} else {
+				EnemyNull (ai);
+			}
 		} else if (enemyweakgo.Target != null && enemyweakperson.Count <= 3) {
-			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemyweakgo.Target);
-			ai.WorkingMemory.SetItem<bool> ("GoBattle", enemyweakgo.goBattle (aboutme));// poderia utilizar true
+			if (enemyweakgo.Target.GetComponent<SerVivo> ().GetVida () > 0) {
+				ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemyweakgo.Target);
+				ai.WorkingMemory.SetItem<bool> ("GoBattle", enemyweakgo.goBattle (aboutme));// poderia utilizar true
+			} else {
+				EnemyNull (ai);
+			}
 		} else if (bestfriendlywithenemy.Target != null) {
 			GameObject bestfriendlyenemy = bestfriendlywithenemy.Target.GetComponent<AIRig> ().AI.WorkingMemory.GetItem<GameObject> ("EnemyGo");
-			if (bestfriendlyenemy != ai.Body) {
+			if (bestfriendlyenemy != ai.Body && bestfriendlyenemy.GetComponent<SerVivo> ().GetVida () > 0) {
 				AboutPerson bestfriendlyenemyabout = new AboutPerson (bestfriendlyenemy);
 
 				if (bestfriendlywithenemy.isGoingHelp (aboutme) &&
-				   bestfriendlyenemyabout.PotencyTogoBattle (aboutme) + bestfriendlywithenemy.PotencyToGoingHelp (aboutme) >= 45) {
+				    bestfriendlyenemyabout.PotencyTogoBattle (aboutme) + bestfriendlywithenemy.PotencyToGoingHelp (aboutme) >= 45) {
 					ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", bestfriendlyenemy);
 					ai.WorkingMemory.SetItem<bool> ("GoBattle", true);
 				} else {
 					ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", null);
 				}
+			} else {
+				EnemyNull (ai);
 			}
-
 		} else {
 			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", null);
 		}
@@ -194,6 +203,11 @@ public class Update : RAINAction
         return ActionResult.SUCCESS;
     }
 
+	void EnemyNull(AI ai){
+		ai.WorkingMemory.SetItem<GameObject>("EnemyGo",null);
+		ai.WorkingMemory.SetItem<GameObject>("EnemyGoPersistent",null);
+
+	}
 	public AboutAnimal MostClose(List<AboutAnimal> persons,AI ai ,float radius){
 		AboutAnimal person = new AboutAnimal ();
 		for(i = 0; i < persons.Count ;i++){
