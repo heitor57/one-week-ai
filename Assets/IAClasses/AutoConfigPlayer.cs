@@ -10,7 +10,6 @@ public class AutoConfigPlayer : AutoConfig {
 
 	new public void ConfigStart(){
 		base.ConfigStart ();
-		gameObject.AddComponent<PlayerAttackCreatorAspect> ();
 		//Component.Destroy( GetComponent<AIRig> ());
 
 		AIRig ai = GetComponent<AIRig> ();
