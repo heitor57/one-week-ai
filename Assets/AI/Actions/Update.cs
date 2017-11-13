@@ -128,11 +128,13 @@ public class Update : RAINAction
 		enemyweakgo = MostClose(enemyweakperson , ai, radius);
 		// Busca do melhor lider
 		for (i = 0; i < leaderperson.Count; i++) {
-			if (i != 0) {
-				if (leaderperson [i].PotencyToLead () >= bestleader.PotencyToLead ())
-					bestleader = leaderperson [i];	
-			} else {
-				bestleader = leaderperson[i];
+			if (!FullLeader (leaderperson [i].Target, ai)) {
+				if (i != 0) {
+					if (leaderperson [i].PotencyToLead () >= bestleader.PotencyToLead ())
+						bestleader = leaderperson [i];	
+				} else {
+					bestleader = leaderperson [i];
+				}
 			}
 		}
 
@@ -166,6 +168,7 @@ public class Update : RAINAction
 			}
 		} else if (enemyweakgo.Target != null && enemyweakperson.Count <= 3) {
 			if (enemyweakgo.Target.GetComponent<SerVivo> ().GetVida () > 0) {
+				
 				ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemyweakgo.Target);
 				ai.WorkingMemory.SetItem<bool> ("GoBattle", enemyweakgo.goBattle (aboutme));// poderia utilizar true
 			} else {
@@ -189,8 +192,8 @@ public class Update : RAINAction
 		} else {
 			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", null);
 		}
-		if(((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")) != null){
-			if (bestleader.Target != null) {
+		if(((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")) != null ){
+			if (bestleader.Target != null && ImLeader(ai) == false) {
 				ai.WorkingMemory.SetItem<GameObject> ("Leader", bestleader.Target);
 				((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")).Head = bestleader.Target;
 			} else {
@@ -202,12 +205,36 @@ public class Update : RAINAction
 		// Algoritmo para visualização das caracteristicas das pessoas oo redor
         return ActionResult.SUCCESS;
     }
-
+	bool ImLeader(AI ai){
+		List<RAINAspect> slots = (List<RAINAspect>)ai.WorkingMemory.GetItem("slot");
+		int tempcount=0;
+		foreach(SlotAspect slot in slots){
+			if (slot.Head == ai.Body) {
+				return true;
+			}
+		}
+		return false;
+	}
+	bool FullLeader(GameObject l, AI ai){
+		List<RAINAspect> slots = (List<RAINAspect>)ai.WorkingMemory.GetItem("slot");
+		int tempcount=0;
+		foreach(SlotAspect slot in slots){
+			if (slot.Head == l) {
+				tempcount++;
+			}
+		}
+		if (tempcount < 999 && tempcount >= 30) {
+			return true;
+		}else{
+			return false;
+		}
+	}
 	void EnemyNull(AI ai){
 		ai.WorkingMemory.SetItem<GameObject>("EnemyGo",null);
 		ai.WorkingMemory.SetItem<GameObject>("EnemyGoPersistent",null);
 
 	}
+
 	public AboutAnimal MostClose(List<AboutAnimal> persons,AI ai ,float radius){
 		AboutAnimal person = new AboutAnimal ();
 		for(i = 0; i < persons.Count ;i++){
