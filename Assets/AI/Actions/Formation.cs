@@ -16,6 +16,7 @@ public class Formation : RAINAction
 	private GameObject lider;
 	private Entity entity;
 	private List<RAINAspect> slots;
+	private Vector2 sizeformation;
     public override void Start(RAIN.Core.AI ai)
     {
         base.Start(ai);
@@ -23,7 +24,9 @@ public class Formation : RAINAction
 		animator = ((RAIN.Animation.BasicAnimator)ai.Animator).UnityAnimator;
 		slots = (List<RAINAspect>)ai.WorkingMemory.GetItem("slot");
 		entity = ai.Body.GetComponent<RAIN.Entities.EntityRig>().Entity;
-    }
+		sizeformation = ai.WorkingMemory.GetItem<GameObject> ("Leader").GetComponent<SerVivo> ().GetTamanhoFormacao ();
+
+	}
 
     public override ActionResult Execute(RAIN.Core.AI ai)
 	{
@@ -63,6 +66,7 @@ public class Formation : RAINAction
 
 		if (valid_slots.Count == 0) { // Primeiro slot de uma formação é feito aqui.
 			temp = lider_loc;
+
 			spotx = 0;
 			spoty = -1;
 			temp = temp + 
@@ -72,8 +76,8 @@ public class Formation : RAINAction
 			ai.WorkingMemory.SetItem<Vector3> ("FormacaoPos", temp);
 			return ActionResult.SUCCESS;
 		} else {// Busca por um slot caso não seja o primeiro.
-			for (z = -1; z >= -10; z--) {
-				for (x = -1; 2 > x; x++) {
+			for (z = -1; z >= -sizeformation.y; z--) {
+				for (x = (int)(quadraticdistributionx(sizeformation.x).x); (int)(quadraticdistributionx(sizeformation.x).y) >= x; x++) {
 					temp = lider_loc;
 					temp = temp + 
 						new Vector3(+Mathf.Sin(Mathf.Deg2Rad*lider_rot)*z +Mathf.Cos(Mathf.Deg2Rad*lider_rot)*x ,
@@ -96,10 +100,23 @@ public class Formation : RAINAction
 		return ActionResult.SUCCESS;
 	
     }
-		
+	Vector2 quadraticdistributionx(float area){
+		int val1=0, val2=0;
+		if (area >= 3 && (area + 3) % 2 == 0) {
+			val1 = -((int)area-1) / 2;
+			val2 = ((int)area-1) / 2;
+		} else if(area>=0){
+			val1 = -((int)area) / 2;
+			val2 = ((int)area-1) / 2;
+		}
+		Vector2 vector =  new Vector2(val1,val2);
+		return vector;
+
+	}
     public override void Stop(RAIN.Core.AI ai)
     {
 		
         base.Stop(ai);
+
     }
 }

@@ -16,6 +16,7 @@ public class AboutPerson : AboutAnimal {
 		feelings [Constants.threat] = person.GetComponent<SerVivo> ().GetAmeaca ();
 		feelings [Constants.goodness] = person.GetComponent<SerVivo> ().GetBondade ();
 		feelings [Constants.leadership] = person.GetComponent<SerVivo> ().GetLideranca ();
+		//feelings [Constants.loyalty] = target.GetComponent<SerVivo> ().GetLealdade ();
 		feelings [Constants.violency] = 0;// implementado porem ele nao tem uma opiniao sobre a violencia
 		characbase=  person.GetComponent<CharacterBase> ();
 		faction =  person.GetComponent<SerVivo> ().GetFacçao ();

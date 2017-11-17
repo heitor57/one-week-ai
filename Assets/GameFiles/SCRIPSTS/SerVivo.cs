@@ -12,13 +12,20 @@ public  abstract class SerVivo : CharacterBase {
 	[SerializeField]protected int lideranca=0;
 	[SerializeField]protected int inteligencia=0;
 	[SerializeField]protected string facçao="Neutro";
-	[SerializeField]
+	[SerializeField]protected Vector2 tamanhoformacao = new Vector2(3,1);
 	protected char sexo;
 	protected string cor;
 	protected int idade;
 
-
-
+	public float GetAreaFormacao(){
+		return tamanhoformacao.x*tamanhoformacao.y;
+	}
+	public Vector2 GetTamanhoFormacao(){
+		return tamanhoformacao;
+	}
+	public void SetTamanhoFormacao(Vector2 tamanhoformacao){
+		this.tamanhoformacao = tamanhoformacao;
+	}
 	public string GetFacçao(){
 		return facçao;
 	}

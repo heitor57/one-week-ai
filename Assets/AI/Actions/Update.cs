@@ -216,6 +216,8 @@ public class Update : RAINAction
 		return false;
 	}
 	bool FullLeader(GameObject l, AI ai){
+		int formationarea = (int)l.GetComponent<SerVivo>().GetAreaFormacao();
+		Debug.Log (formationarea);
 		List<RAINAspect> slots = (List<RAINAspect>)ai.WorkingMemory.GetItem("slot");
 		int tempcount=0;
 		foreach(SlotAspect slot in slots){
@@ -223,7 +225,7 @@ public class Update : RAINAction
 				tempcount++;
 			}
 		}
-		if (tempcount < 999 && tempcount >= 30) {
+		if (tempcount >= formationarea) {
 			return true;
 		}else{
 			return false;

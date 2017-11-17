@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 static class Constants{
-	public const int amountfeelings = 6;
+	public const int amountfeelings = 7;
 	public const int charisma = 0;
 	public const int violency = 1;
 	public const int courage = 2;
 	public const int threat = 3;
 	public const int goodness = 4;
 	public const int leadership = 5;
+	public const int loyalty = 6;
 }
 
 public class AboutAnimal : Object {
@@ -58,6 +59,7 @@ public class AboutAnimal : Object {
 		feelings [Constants.threat] = target.GetComponent<SerVivo> ().GetAmeaca ();
 		feelings [Constants.goodness] = target.GetComponent<SerVivo> ().GetBondade ();
 		feelings [Constants.leadership] = target.GetComponent<SerVivo> ().GetLideranca ();
+		//feelings [Constants.loyalty] = target.GetComponent<SerVivo> ().GetLealdade ();
 		feelings [Constants.violency] = 0;// implementado porem ele nao tem uma opiniao sobre a violencia
 		characbase=  target.GetComponent<CharacterBase> ();
 		faction =  target.GetComponent<SerVivo> ().GetFacçao ();
