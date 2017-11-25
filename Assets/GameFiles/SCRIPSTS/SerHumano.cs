@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using RAIN.Core;
 public abstract class SerHumano : SerVivo {
 	
 	[SerializeField]protected string profissao;
@@ -20,7 +20,7 @@ public abstract class SerHumano : SerVivo {
 		
 
 	}*/
-
+	
 	public override void perdeVida(float dano, CharacterBase cb)
 	{
 		this.vida -= dano;
