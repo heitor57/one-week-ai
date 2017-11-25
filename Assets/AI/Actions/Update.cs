@@ -217,7 +217,6 @@ public class Update : RAINAction
 	}
 	bool FullLeader(GameObject l, AI ai){
 		int formationarea = (int)l.GetComponent<SerVivo>().GetAreaFormacao();
-		Debug.Log (formationarea);
 		List<RAINAspect> slots = (List<RAINAspect>)ai.WorkingMemory.GetItem("slot");
 		int tempcount=0;
 		foreach(SlotAspect slot in slots){

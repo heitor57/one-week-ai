@@ -76,19 +76,28 @@ public class Formation : RAINAction
 			ai.WorkingMemory.SetItem<Vector3> ("FormacaoPos", temp);
 			return ActionResult.SUCCESS;
 		} else {// Busca por um slot caso não seja o primeiro.
+			int xpos =0;
 			for (z = -1; z >= -sizeformation.y; z--) {
-				for (x = (int)(quadraticdistributionx(sizeformation.x).x); (int)(quadraticdistributionx(sizeformation.x).y) >= x; x++) {
+				for (x = 0; (int)sizeformation.x > x; x++) {
 					temp = lider_loc;
+					if (x == 0) {
+						xpos = 0;
+					} else if(x%2 == 1){
+						xpos = Mathf.Abs (xpos);
+						xpos++;
+					}else{
+						xpos = -xpos;
+					}
 					temp = temp + 
-						new Vector3(+Mathf.Sin(Mathf.Deg2Rad*lider_rot)*z +Mathf.Cos(Mathf.Deg2Rad*lider_rot)*x ,
+						new Vector3(+Mathf.Sin(Mathf.Deg2Rad*lider_rot)*z +Mathf.Cos(Mathf.Deg2Rad*lider_rot)*xpos ,
 							0,
-							+Mathf.Cos(Mathf.Deg2Rad*lider_rot)*z -Mathf.Sin(Mathf.Deg2Rad*lider_rot)*x);
+							+Mathf.Cos(Mathf.Deg2Rad*lider_rot)*z -Mathf.Sin(Mathf.Deg2Rad*lider_rot)*xpos);
 					for (j = 0; valid_slots.Count > j; j++) {
 						
-						if (valid_slots[j].Slot.z == z && valid_slots[j].Slot.x == x)
+						if (valid_slots[j].Slot.z == z && valid_slots[j].Slot.x == xpos)
 							break;
 						if (valid_slots.Count - 1 == j) {
-							((SlotAspect)entity.GetAspect("slot")).Slot= new Vector3(x,0,z);
+							((SlotAspect)entity.GetAspect("slot")).Slot= new Vector3(xpos,0,z);
 							ai.WorkingMemory.SetItem<Vector3> ("FormacaoPos", temp);
 							return ActionResult.SUCCESS;
 						}
@@ -100,6 +109,8 @@ public class Formation : RAINAction
 		return ActionResult.SUCCESS;
 	
     }
+	/*
+	 * Talvez venha a ser utilizado novamente
 	Vector2 quadraticdistributionx(float area){
 		int val1=0, val2=0;
 		if (area >= 3 && (area + 3) % 2 == 0) {
@@ -110,9 +121,11 @@ public class Formation : RAINAction
 			val2 = ((int)area-1) / 2;
 		}
 		Vector2 vector =  new Vector2(val1,val2);
+
+		Debug.Log (vector);
 		return vector;
 
-	}
+	}*/
     public override void Stop(RAIN.Core.AI ai)
     {
 		
