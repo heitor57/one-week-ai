@@ -1,2 +1,1 @@
-# Repositorio do projeto inteiro
-https://github.com/heitor57/One-Week
+Repositório do projeto inteiro: https://github.com/heitor57/One-Week
